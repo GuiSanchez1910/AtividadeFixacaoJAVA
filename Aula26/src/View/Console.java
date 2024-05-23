@@ -1,4 +1,5 @@
 package View;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,21 +11,20 @@ public class Console {
         int valor = 0;
 
         while(true){
-            
-            try { 
+            try { // tenta executar a leitura do int
                 valor = scanner.nextInt();
-                break; 
+                break; // quebra o loop se o valor foi lido
             
             } catch (InputMismatchException e) {
-                
+                // senão, a exceção é capturada:
                 System.out.println("O valor informado não é um inteiro. Digite novamente: ");
             
-            } finally {
+            } finally { // SEMPRE será executado
 
-                scanner.nextLine(); 
+                scanner.nextLine(); // limpa o buffer
             }
         }
-        
+        // retorna o valor lido:
         return valor;
     }
 

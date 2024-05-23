@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Obra {
+public class Obra {
     
     public String titulo;
     private String artista;
@@ -8,11 +8,11 @@ public abstract class Obra {
     private String tipo;
     private String localizacao;
     
-    public String getTítulo() {
+    public String getTitulo() {
         return titulo;
     }
-    public void setTítulo(String título) {
-        this.titulo = título;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
     public String getArtista() {
         return artista;
@@ -39,8 +39,8 @@ public abstract class Obra {
         this.localizacao = localizacao;
     }
     
-    public Obra(String título, String artista, int ano, String tipo, String localizacao) {
-        this.titulo = título;
+    public Obra(int ano, String artista, String titulo, String tipo, String localizacao) {
+        this.titulo = titulo;
         this.artista = artista;
         this.ano = ano;
         this.tipo = tipo;
@@ -49,6 +49,16 @@ public abstract class Obra {
 
     @Override
     public String toString() {
-        return "Título: " + titulo + "\nArtista: " + artista + "\nAno: " + ano + "\nTipo: " + tipo + "\nLocalização: " + localizacao + "\n";
+        return titulo + ", " + artista + ", " + ano + ", " + tipo + ", " + localizacao;
+    }
+
+    public static Obra fromString(String linha) {
+
+        String[] dadosObra = linha.split(", ");
+
+        return new Obra(Integer.parseInt(dadosObra[0]), 
+                        dadosObra[1], 
+                        dadosObra[2], dadosObra[3], dadosObra[4]);
+
     }
 }
